@@ -1,0 +1,11 @@
+to activate the venv we do '''conda activate  "file_location"'''
+to deactivate conda deactivate
+#----------------------------------------------------------------------
+1) do no t use langchain.chat_models use langchain_openai instead - 
+2) use a runnable Sequence instead
+3) cannmot use chain.run we need to use chain.invoke
+
+#----------------------------------------------------------------------
+we have to correct the implementation th the st.expnder for bug checker after uploading .py file_location.
+#----------------------------------------------------------------------
+the analyze my code button dissapears when all the options are selected using st.multiselect..
