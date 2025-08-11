@@ -2,8 +2,8 @@ from langchain.prompts import PromptTemplate
 import os,sys
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.schema.output_parser import StrOutputParser
-from src.logger import logging
-from src.exception import CustomException
+from core.src.logger import logging
+from core.src.exception import CustomException
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain.schema import Document

@@ -9,3 +9,15 @@ to deactivate conda deactivate
 we have to correct the implementation th the st.expnder for bug checker after uploading .py file_location.
 #----------------------------------------------------------------------
 the analyze my code button dissapears when all the options are selected using st.multiselect..
+#----------------------------------------------------------------------
+ we need to update our static prompt templates to dynamic prompt templates
+ #----------------------------------------------------------------------
+ we need to check with code with your assistant as well we need to refresh results asfter its been deployed and potentially provide options to read 
+ previous convos.
+ #----------------------------------------------------------------------
+ already reserached on the formula of complexity score have a final look
+#----------------------------------------------------------------------
+previous analysis results in code explanation needs to be looked at check it out once before deploying
+#----------------------------------------------------------------------
+problem : upload a code -> chat with your assistant also needs access to that code or lets see how
+we can frame that ->  better way to ask questions about it as well instead of just 5 Optimizationtechs

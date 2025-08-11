@@ -180,3 +180,9 @@ cython_debug/
 
 #Ignore ENV
 .env
+
+#Ignore Streamlit
+.streamlit/
+
+#Ignore Storage File
+.storage/

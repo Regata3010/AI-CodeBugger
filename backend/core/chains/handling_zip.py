@@ -3,8 +3,8 @@ from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.schema.output_parser import StrOutputParser
 import os, sys
 import zipfile, tempfile
-from src.logger import logging
-from src.exception import CustomException
+from core.src.logger import logging
+from core.src.exception import CustomException
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain.schema import Document
