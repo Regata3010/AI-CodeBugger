@@ -12,11 +12,11 @@ app = FastAPI(
     description="Advanced AI-powered code analysis platform",
     version="1.0.0"
 )
-
+# "http://localhost:3000"
 # Add CORS middleware (allows frontend to call backend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8501"],  # Streamlit default port
+    allow_origins=["http://localhost:8501","http://localhost:3000/style-test","http://localhost:3000"],  # Streamlit default port
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

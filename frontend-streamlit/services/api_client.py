@@ -5,7 +5,7 @@ from typing import Dict, Any, Optional, List
 import time
 
 class AICodeReviewAPIClient:
-    def __init__(self, base_url: str = "http://localhost:8000"):
+    def __init__(self, base_url = "http://localhost:8000"):
         self.base_url = base_url
         self.session = requests.Session()
         self.session.headers.update({
