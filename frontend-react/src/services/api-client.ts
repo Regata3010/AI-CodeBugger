@@ -27,8 +27,7 @@ interface ChatResponse {
 
 // Main API Client Class (like your Python class)
 export default class APIClient {
-  public baseUrl: string = "http://localhost:8000"  // Changed from private to public
-  
+  public baseUrl: string = "http://35.202.213.228:8000" 
   // Getter for base URL (public access)
   get url(): string {
     return this.baseUrl
