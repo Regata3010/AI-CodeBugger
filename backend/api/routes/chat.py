@@ -16,7 +16,7 @@ async def conversational(request: ConversationalRequest):
     """Ask Doubts about Code using dynamic AI chains"""
     try:
         # Get API key from environment
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/AI Bugger/regata-2ca53-df75398184a5.json"
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/nuclearreactor3010/AI-CodeBugger/backend/regata-2ca53-df75398184a5.json"
         openai_api_key = os.getenv("OPENAI_API_KEY")
         if not openai_api_key:
             raise HTTPException(status_code=500, detail="OpenAI API key not configured")
