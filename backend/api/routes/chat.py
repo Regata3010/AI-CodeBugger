@@ -112,7 +112,7 @@ async def chat_about_project_file(project_id: str, request: ProjectChatRequest):
             context_info = f"Project: {project['name']}"
             
         # Setup Firestore chat
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/AI Bugger/regata-2ca53-df75398184a5.json"
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/nuclearreactor3010/AI-CodeBugger/backend/regata-2ca53-df75398184a5.json"
         
         PROJECT_ID = "regata-2ca53"
         COLLECTION_NAME = "chat_history_chains"
