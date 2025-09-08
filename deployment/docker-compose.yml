@@ -1,1 +1,51 @@
-  
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: ./deployment/Dockerfile.backend
+      platforms:
+        - linux/amd64
+    image: us-central1-docker.pkg.dev/ai-bugger/ai-code-review-platform/backend:v1.2
+    container_name: backend-service
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/google-credentials.json
+      - PYTHONPATH=/app
+      - PORT=8000
+    volumes:
+      - ../backend/regata-2ca53-df75398184a5.json:/app/credentials/google-credentials.json:ro
+      - ./backend/logs:/app/logs
+      - ./backend/uploads:/app/uploads
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: ./deployment/Dockerfile.frontend
+      platforms:
+        - linux/amd64
+    image: us-central1-docker.pkg.dev/ai-bugger/ai-code-review-platform/frontend:v1.1
+    container_name: frontend-service
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  backend-logs:
+    driver: local
+  backend-uploads:
+    driver: local

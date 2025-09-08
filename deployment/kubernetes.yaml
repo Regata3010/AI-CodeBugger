@@ -1,0 +1,182 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ai-code-review
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: api-keys
+    namespace: ai-code-review
+type: Opaque
+stringData:
+    OPENAI_API_KEY: "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"
+    GOOGLE_APPLICATION_CREDENTIALS: "/app/credentials/google-credentials.json"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: google-credentials
+  namespace: ai-code-review
+type: Opaque
+data:
+  google-credentials.json: "ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAicmVnYXRhLTJjYTUzIiwKICAicHJpdmF0ZV9rZXlfaWQiOiAiZGY3NTM5ODE4NGE1Mzc2ZWM1MzUxYmY2MzQxODUwNWU0NTg5ZTE3NyIsCiAgInByaXZhdGVfa2V5IjogIi0tLS0tQkVHSU4gUFJJVkFURSBLRVktLS0tLVxuTUlJRXZBSUJBREFOQmdrcWhraUc5dzBCQVFFRkFBU0NCS1l3Z2dTaUFnRUFBb0lCQVFEQnBWcHhtWVNvbnZVdVxudXdKMUQyWTlqSzNxcXo3NGROdU1EVEdjN09HS3JCcTA3ZkxmYk1DWkJBbnIwZEtEMmFOZXQweXpwNFhXbUJkZlxuSHVqZHNLSkRzT3hsd2d6UCtOeWNUT1ZTTldyVzc2OVl6dXdOVjJ6SVFMV3Jndkd5cUU5K1JVeEVRcXdDU2F3U1xub1MvcGVmWEo3cUZncXM3cnNSYXRyK1U1Y21Ta2pjTUgyS1JQYTBGdkpweG9aQkNpSWdVQUpSZzZlRlRHNzhhMVxuWldrVitJbWZQbUc3bGxYcTlUUGZXNTZGUDVCVElRR0dNVzdpWFNsNE16SEZJaDVmN2V0TnltSFlsRVdKbW1RQ1xuVEtUbVJNbjBhRFRneC82S0drOWhnOHIxbEhWUzRCUU5PZzFZR3BzdFRpRTBMQjBRUXFHOVVCMS9Va0I5UWxyVlxucnVuZUNWc3ZBZ01CQUFFQ2dnRUFIYXN3N1VEQkkzaWZSaGFlN01KOFBxZmtLWlV0STdIN3hUeHNRb2ZFa3BPRlxuei95NC9tUlNLZCtGaVp6dkxRWldVbmV4QjhGOTd3QUViSzEycmlpVzQ5b2lqZ0NxSjk4UUpkNWVNRGRBOUVkcVxuelNkKzRSaG84VkdBeEJOZTVxbUU3R3Evb2FHNWF1eFFzZFlDV2pvMlgwYnhjTGNhMXQrZUF1UjFNVlVHZUhOL1xuVDNyYkVWa1l5TmlFempERGQvY0VxdlNybk1xejFBb3VUYkxsU2N2RE01MzZISzU0VGZMSi9wSkNLUlg3S2xDMFxuaW0wVW9HV2Jwc05ISENZbkhIK1EwOG1vV3pVbjV5TGpmWWZkb1lhMEhNTlhYZ1JoVXhFTW9pVXBFT1ltRHZNSFxuKzNmQTg5WWczZGc5dTcydlBaRmZtVXg5MGhvTXJwU0E5SGZjejNDQThRS0JnUUQwRWpzRXFOUUE1VUtYeEFQUlxueU1PSGxIUWlmZ1Z1b21Rd2ZkQlA3ay9nb0NPOGJveElJam1Lb3B1MmJTZ2J5Y29IOFhWWnROelowaVF4dHBHMlxubHpDUXp6VkRCUnNmaUVSdCtFWUMwbTlEWnRDTWVPR3lWSEZid3k2QTh4N0pyL2FrT1p4cVpqQnEyT2h1enV0TVxuZFQ2NFcva3h4bU5uMFhFMG0vMG9FSitMcVFLQmdRRExIRFlzcjcxUVBzeCtwVFBxNWtIa3RCYjZjT1hSRnc3VVxuSmcvYitVRjY1Qm1PYWlwdTlsRUtYYWhvR1J1YXhhcFN3c09BSlFGWHE1ZkpZanZIZ01ZeExzdDVHK1NPM0ZKWlxucWkzcTRlNVJBQzdYdDJBYk9LODBwd2hKa3gyUEo4cTk5UitnanhFYU9jMS82am9WcEF6dXl5cytkeTc1RmRrUVxubEpjaDlxNjNGd0tCZ0FYK0FKYnZzaXpIZENnWHR1Uktvb3BNbWNGVENMMGJuWXdYT3FzTHRjaFZCaXVWSnpxS1xuSkpHRHhvRG5FeW9EZlVOT3FVdm5oZGlQTVRaTFBpNldiYW5RZklWRnRkSERYYks1ZXJhTkJoQklrT3d4OTVDU1xuUkNvMWs0bTA3bGVUUzJIaXpEVk1odm5JazRSTTdqZjFWUEhmeURGeHBuVWhEajkxYVBTMzI4THBBb0dBVUVQdVxuMk12K2FYYlh3M2l2d3JXSjlzS0FqaW9OZUFxL3JuRDROWHNVT0dkcC9oRFFnaGRQUVdSdngrdWNNQmJMVDNkdVxuWVBhK3lCR2tvMDN4eDg2SkJDaTAra0JlbTJKUUhPVVd6a3JJcmpQL1R2cEZ2Wnd5Q1FHMVViWVVxVjBWVHVwT1xudkZtdGJZcklQak9uRHFSTkJCVkFHcWhvNU1DUWptL2FKZTdoYnJNQ2dZQmlhQlZpSGVkRmZTNUIxRXVJOEFab1xucVp2SnlZVFdQeXBHT3p4YUgyRWFJSzQyWDNKdllOV0ZTZ3d6dW5NaDlDbHV4cGlpMFBnTW83TDI2VUF1VGQxOVxudStFK1RHYzhzbzhGVXMrMGJRV0ltclJKWnlEeUdUQ2d6YjFWZmRqV3R3Nk9ZUG5uOFNTZmI0Y1I3aTFTQ1c4YVxuMjZkRVByendERE9tWWxqVGUvUEhUdz09XG4tLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tXG4iLAogICJjbGllbnRfZW1haWwiOiAicmVnYXRhQHJlZ2F0YS0yY2E1My5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsCiAgImNsaWVudF9pZCI6ICIxMTAyNzYzMzk2ODk0NTMzMTkwNjIiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsCiAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICJjbGllbnRfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9yb2JvdC92MS9tZXRhZGF0YS94NTA5L3JlZ2F0YSU0MHJlZ2F0YS0yY2E1My5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsCiAgInVuaXZlcnNlX2RvbWFpbiI6ICJnb29nbGVhcGlzLmNvbSIKfQo="
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backend-storage
+  namespace: ai-code-review
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: ai-code-review
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: us-central1-docker.pkg.dev/ai-bugger/ai-code-review-platform/backend:v1.1
+        ports:
+        - containerPort: 8000
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-keys
+              key: OPENAI_API_KEY
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          valueFrom:
+            secretKeyRef:
+              name: api-keys
+              key: GOOGLE_APPLICATION_CREDENTIALS
+        - name: PYTHONPATH
+          value: "/app"
+        volumeMounts:
+        - name: storage
+          mountPath: /app/logs
+        - name: google-creds
+          mountPath: /app/credentials
+          readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: backend-storage
+      - name: google-creds
+        secret:
+          secretName: google-credentials
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: ai-code-review
+spec:
+  type: ClusterIP
+  selector:
+    app: backend
+  ports:
+  - port: 8000
+    targetPort: 8000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: ai-code-review
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: us-central1-docker.pkg.dev/ai-bugger/ai-code-review-platform/frontend:v1.0
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: ai-code-review
+spec:
+  type: LoadBalancer
+  selector:
+    app: frontend
+  ports:
+  - port: 80
+    targetPort: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ai-code-review-ingress
+  namespace: ai-code-review
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "ai-code-review-ip"
+spec:
+  rules:
+  - host: your-domain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80

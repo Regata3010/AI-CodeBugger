@@ -1,0 +1,22 @@
+# FROM python:3.11-slim
+
+# WORKDIR /app
+# COPY requirements.txt .
+# RUN pip install -r requirements.txt
+# COPY . .
+
+# EXPOSE 8000
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Create credentials directory (no hardcoded credentials file)
+# RUN mkdir -p /app/credentials
+
+COPY backend/ .
+
+EXPOSE 8000
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

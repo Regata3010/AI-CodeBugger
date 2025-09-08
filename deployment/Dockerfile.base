@@ -1,0 +1,23 @@
+FROM python:3.11-slim
+
+# Install system dependencies if needed
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python packages ONE BY ONE (like you did on VM)
+# Core dependencies first
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir grpcio==1.60.0
+RUN pip install --no-cache-dir protobuf==4.25.1
+RUN pip install --no-cache-dir google-api-core==2.15.0
+RUN pip install --no-cache-dir google-cloud-core==2.4.1
+
+# Google Cloud packages
+RUN pip install --no-cache-dir google-cloud-firestore==2.14.0
+
+# Add your other packages here (check your VM for versions)
+# RUN pip install --no-cache-dir flask==3.0.0
+# RUN pip install --no-cache-dir requests==2.31.0
+# RUN pip install --no-cache-dir pandas==2.0.3
