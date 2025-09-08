@@ -12,7 +12,7 @@
 
 ---
 
-**🎯 [Experience Live Demo](http://35.202.213.228:3000) | 📚 [API Documentation](http://35.202.213.228:8000/docs) | 🚀 [Quick Start](#-quick-start)**
+**🎯 [Experience Live Demo](http://35.202.213.228:3000) | 📚 [API Documentation](http://35.202.213.228:8000/docs)|**🌐 Frontend (Kubernetes):** [http://34.63.190.7/](http://34.63.190.7/) | 🚀[Quick Start](#-quick-start)** 
 
 </div>
 
