@@ -128,6 +128,7 @@ Built for scale, security, and reliability:
 ```
 🌐 Google Cloud Platform
 🔄 PM2 Process Management
+Kubernetes (GKE) + Docker
 🔒 CORS Security
 📈 Auto-scaling
 ```
