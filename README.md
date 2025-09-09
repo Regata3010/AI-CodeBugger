@@ -133,6 +133,11 @@ Kubernetes (GKE) + Docker
 📈 Auto-scaling
 ```
 
+** APIKEYS
+'''
+Used SealedSecrets(v0.24.0) to Encrypt APIKeys so APIKeys are safe and there is no data loss.
+'''
+
 </td>
 </tr>
 </table>
