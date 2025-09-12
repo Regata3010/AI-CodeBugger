@@ -3,8 +3,8 @@
 # 🧠 AI Code Review & Analysis Platform
 ### *Revolutionizing Software Development with Intelligent Automation*
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-35.202.213.228:3000-blue?style=for-the-badge)](http://35.202.213.228:3000)
-[![API Status](https://img.shields.io/badge/API-Online-green?style=for-the-badge)](http://35.202.213.228:8000)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-34.63.190.7-blue?style=for-the-badge)](http://34.63.190.7)
+[![API Status](https://img.shields.io/badge/API-Online-green?style=for-the-badge)](http://34.63.190.7/docs)
 [![Version](https://img.shields.io/badge/Version-2.0.0-red?style=for-the-badge)](#)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](#)
 
@@ -12,72 +12,61 @@
 
 ---
 
-**🎯 [Experience Live Demo](http://35.202.213.228:3000) | 📚 [API Documentation](http://35.202.213.228:8000/docs)|**🌐 Frontend (Kubernetes):** [http://34.63.190.7/](http://34.63.190.7/) | 🚀[Quick Start](#-quick-start)** 
+**🎯 [Live Demo (Frontend)](http://34.63.190.7) | 📚 [API Documentation](http://34.63.190.7/docs) | 🚀 [Quick Start](#-quick-start)**
 
 </div>
 
 ---
 
-## 🌟 **Why This Platform Changes Everything**
+> ⚠️ **Note:** Metrics shown below are **sample/demo values** and are not live-measured statistics.
 
-Traditional code reviews take **hours**. Manual bug detection is **error-prone**. Writing comprehensive tests is **tedious**. 
+---
+
+## 🌟 Why This Platform Changes Everything
+
+Traditional code reviews take **hours**. Manual bug detection is **error-prone**. Writing comprehensive tests is **tedious**.  
 
 **Our AI platform solves this in seconds.**
 
 > *"This platform reduced our code review time from 4 hours to 15 minutes while catching 3x more potential issues."*  
-> — **Leading Development Team**
+> — **Aarav Pandey**
 
-### **🎯 The Problem We Solve**
+### 🎯 The Problem We Solve
 - **💸 Cost:** Manual code reviews cost $50-200 per hour
 - **⏱️ Speed:** Traditional reviews take 2-8 hours per pull request  
 - **🐛 Quality:** Human reviewers miss 60% of subtle bugs
 - **📈 Scale:** Teams can't review every line of code thoroughly
 
-### **✨ Our Solution**
-- **🤖 AI-Powered:** GPT-4 analyzes code faster than any human
+### ✨ Our Solution
+- **🤖 AI-Powered:** GPT-4 (via API) analyzes code faster than any human
 - **🎯 Comprehensive:** 5 analysis types in one platform
-- **🚀 Instant:** 15-30 second analysis vs hours of manual work
+- **🚀 Instant:** 15–30 second target analysis vs hours of manual work
 - **💡 Intelligent:** Learns from millions of code patterns
 
 ---
 
-## 🏆 **Core Capabilities**
+## 🏆 Core Capabilities
 
-<table>
-<tr>
-<td width="50%">
-
-### 🔍 **Multi-Format Intelligence**
+### 🔍 Multi-Format Intelligence
 - **📄 Single Files** - Drop any `.py` file for instant insights
 - **📦 ZIP Projects** - Comprehensive multi-file analysis  
 - **🌐 GitHub Integration** - Direct repo analysis with zero setup
 - **⚡ Real-time Validation** - Live feedback as you code
 
-</td>
-<td width="50%">
-
-### 🤖 **AI-Driven Analysis Suite**
+### 🤖 AI-Driven Analysis Suite
 - **🐛 Bug Detection** - Find issues before they reach production
 - **⚡ Performance Optimization** - Speed and efficiency improvements
 - **📚 Code Documentation** - Auto-generate comprehensive explanations
 - **🧪 Test Generation** - Complete unit test suites in seconds
 - **⚠️ Edge Case Discovery** - Identify failure scenarios humans miss
 
-</td>
-</tr>
-</table>
-
-### 💬 **Conversational Code Intelligence**
-Transform how you interact with your codebase through natural language:
-
+### 💬 Conversational Code Intelligence
 - **🧠 Context-Aware Discussions** - Ask complex questions about your code architecture
 - **💾 Persistent Memory** - Conversations saved across sessions with Firestore
 - **📁 Multi-File Understanding** - Discuss relationships between components
 - **⚡ Instant Answers** - No more searching through documentation
 
-### 🏗️ **Enterprise-Grade Architecture**
-Built for scale, security, and reliability:
-
+### 🏗️ Enterprise-Grade Architecture
 - **🔧 Microservices Design** - Independent, scalable services
 - **🌐 RESTful APIs** - Clean, documented endpoints for integration
 - **📊 Real-time Processing** - Live progress tracking and updates  
@@ -85,11 +74,7 @@ Built for scale, security, and reliability:
 
 ---
 
-## 🛠️ **Technology Powerhouse**
-
-<table>
-<tr>
-<td width="25%">
+## 🛠️ Technology Powerhouse
 
 **🎨 Frontend**
 ```typescript
@@ -97,25 +82,23 @@ Built for scale, security, and reliability:
 🔷 TypeScript + Tailwind CSS
 📱 Responsive Design
 🔄 Real-time Updates
-```
+
 
 </td>
 <td width="25%">
 
 **⚙️ Backend**
-```python
 🚀 FastAPI + Python 3.10
 🔗 RESTful Architecture
 📊 Async Processing
 🛡️ Security Middleware
-```
 
 </td>
 <td width="25%">
 
 **🧠 AI/ML Stack**
 ```
-🤖 OpenAI GPT-4o
+🤖 OpenAI GPT-4
 ⛓️ LangChain Framework
 🎯 Dynamic Prompting
 🔄 Chain Composition
@@ -144,15 +127,67 @@ Used SealedSecrets(v0.24.0) to Encrypt APIKeys so APIKeys are safe and there is 
 
 ---
 
-## 🎯 **Real-World Impact**
+## 🎯 **Our AI Analysis Types**
 
-| **Challenge** | **Traditional Approach** | **Our AI Solution** | **Time Saved** |
-|---------------|-------------------------|---------------------|-----------------|
-| 🔍 **Code Review** | 4-8 hours manual review | 15-30 second AI analysis | **95% faster** |
-| 🐛 **Bug Detection** | Miss 60% of edge cases | AI finds complex patterns | **3x more bugs** |
-| 🧪 **Test Creation** | 2-4 hours writing tests | Auto-generated test suites | **90% faster** |
-| 📚 **Documentation** | Hours of manual writing | Instant explanations | **85% faster** |
-| 🚀 **Optimization** | Trial and error approach | Data-driven suggestions | **70% improvement** |
+### **🐛 Bug Detection**
+*Identify potential runtime errors, logical flaws, and security vulnerabilities*
+
+**What it finds:**
+- **Memory leaks** and resource management issues
+- **Null pointer exceptions** and undefined variable access
+- **Infinite loops** and performance bottlenecks  
+- **Security vulnerabilities** (SQL injection, XSS potential)
+- **Type mismatches** and casting errors
+
+**Output:** Detailed bug report with line numbers, severity levels, and fix suggestions.
+
+### **⚡ Code Optimization**  
+*Enhance performance, readability, and maintainability*
+
+**Optimization areas:**
+- **Algorithm efficiency** - Suggest better data structures and algorithms
+- **Memory usage** - Reduce RAM consumption and garbage collection
+- **CPU performance** - Optimize computational complexity  
+- **Code readability** - Improve naming conventions and structure
+- **Best practices** - Follow Python PEP standards and industry conventions
+
+**Output:** Refactored code with performance improvements and explanation of changes.
+
+### **📚 Code Explanation**
+*Generate comprehensive documentation and architectural insights*
+
+**Explains:**
+- **Function purposes** - What each function/class does
+- **Data flow** - How information moves through your code
+- **Dependencies** - Relationships between modules and components
+- **Design patterns** - Architectural decisions and patterns used
+- **Business logic** - High-level explanation of application functionality
+
+**Output:** Markdown documentation with diagrams, examples, and usage instructions.
+
+### **🧪 Unit Test Generation**
+*Create comprehensive test suites for your codebase*
+
+**Generates:**
+- **Test cases** - Cover normal, edge, and error conditions
+- **Mock objects** - For external dependencies and services
+- **Assertions** - Validate expected behavior and outputs
+- **Test fixtures** - Setup and teardown code for testing
+- **Coverage analysis** - Identify untested code paths
+
+**Output:** Complete `test_*.py` files ready to run with pytest.
+
+### **⚠️ Edge Case Detection**
+*Discover failure scenarios and boundary conditions*
+
+**Identifies:**
+- **Input validation** - Invalid data handling
+- **Boundary conditions** - Min/max values, empty inputs
+- **Concurrency issues** - Race conditions and deadlocks
+- **Network failures** - API timeouts and connection errors
+- **Resource limits** - Memory, disk, and processing constraints
+
+**Output:** Comprehensive edge case scenarios with test data and mitigation strategies.
 
 ---
 
@@ -160,7 +195,7 @@ Used SealedSecrets(v0.24.0) to Encrypt APIKeys so APIKeys are safe and there is 
 
 ### **🌐 Instant Access (No Setup Required)**
 
-**[👉 Click Here to Access Platform](http://35.202.213.228:3000)**
+**[👉 Click Here to Access Platform](http://34.63.190.7)**
 
 ## 🚀 **How to Upload Your Code**
 
@@ -268,31 +303,28 @@ Direct analysis of public GitHub repositories with zero setup.
 
 ---
 
-## 🏗️ **System Architecture**
-
-```mermaid
 graph TB
     subgraph "🌐 Frontend Layer"
-        A[👤 User Interface<br/>React + Next.js]
-        B[📊 Real-time Dashboard<br/>Progress Tracking]
+        A[👤 User Interface<br>React + Next.js]
+        B[📊 Real-time Dashboard<br>Progress Tracking]
     end
     
     subgraph "⚙️ Backend Services"
-        C[🚀 FastAPI Server<br/>Port 8000]
-        D[🔧 Analysis Engine<br/>Multi-threading]
-        E[💬 Chat Service<br/>Context Management]
+        C[🚀 FastAPI Server<br>Port 8000]
+        D[🔧 Analysis Engine<br>Multi-threading]
+        E[💬 Chat Service<br>Context Management]
     end
     
     subgraph "🧠 AI Layer"
-        F[🤖 OpenAI GPT-4<br/>Primary Model]
-        G[⛓️ LangChain<br/>Dynamic Chains]
-        H[🎯 Prompt Engineering<br/>Optimized Templates]
+        F[🤖 OpenAI GPT-4<br>Primary Model]
+        G[⛓️ LangChain<br>Dynamic Chains]
+        H[🎯 Prompt Engineering<br>Optimized Templates]
     end
     
     subgraph "💾 Data Layer"
-        I[🔥 Google Firestore<br/>Chat History]
-        J[📁 File Storage<br/>Project Management]
-        K[📈 Analytics<br/>Performance Metrics]
+        I[🔥 Google Firestore<br>Chat History]
+        J[📁 File Storage<br>Project Management]
+        K[📈 Analytics<br>Performance Metrics]
     end
     
     A --> C
@@ -310,7 +342,7 @@ graph TB
     style A fill:#FF6B6B,stroke:#fff,color:#fff
     style F fill:#4ECDC4,stroke:#fff,color:#fff
     style I fill:#45B7D1,stroke:#fff,color:#fff
-```
+
 
 ---
 
@@ -321,8 +353,8 @@ graph TB
 <td width="33%">
 
 ### **⚡ Speed Metrics**
-- **Analysis Time:** 15-30s per file
-- **API Response:** <500ms average
+- **Target/Expected Analysis Time:** 15–30s per file (depending on code complexity)
+- **API Response (expected):** <500ms average
 - **UI Loading:** <2s initial load
 - **Real-time Updates:** <100ms latency
 
@@ -547,7 +579,7 @@ Detailed guides
 
 ## 📊 **Usage Analytics**
 
-*Real metrics from our live platform:*
+*(Sample usage metrics for demonstration purposes)*
 
 | **Metric** | **Daily** | **Weekly** | **Monthly** |
 |------------|-----------|------------|-------------|
@@ -600,7 +632,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 [![GitHub forks](https://img.shields.io/github/forks/Regata3010/AI-CodeBugger?style=for-the-badge)](https://github.com/Regata3010/AI-CodeBugger/network/members)
 [![GitHub watchers](https://img.shields.io/github/watchers/Regata3010/AI-CodeBugger?style=for-the-badge)](https://github.com/Regata3010/AI-CodeBugger/watchers)
 
-### **🚀 [Experience the Platform](http://35.202.213.228:3000) | 📚 [Read the Docs](http://35.202.213.228:8000/docs) | 💻 [View Source](https://github.com/Regata3010/AI-CodeBugger)**
+### **🚀 [Experience the Platform](http://34.63.190.7) | 📚 [Read the Docs](http://34.63.190.7/docs) | 💻 [View Source](https://github.com/Regata3010/AI-CodeBugger)**
 
 ---
 
