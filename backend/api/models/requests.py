@@ -41,4 +41,16 @@ class ProjectAnalysisRequest(BaseModel):
 class GitHubRequest(BaseModel):
     repo_url: str
     model_choice: str = "gpt-4o"
+    
+class VSCodeChatRequest(BaseModel):
+    message: str
+    file_content: str
+    file_name: str
+    model_choice: str = "gpt-4o"
+    analysis_type: Optional[str] = None  # "bugs", "optimize", "explain", "tests", "edge-cases"
 
+class ConversationalVSCodeChatRequest(BaseModel):
+    code:str
+    question: str
+    session_id: str
+    model_choice: str = "gpt-4o"

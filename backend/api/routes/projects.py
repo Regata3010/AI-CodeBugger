@@ -269,113 +269,113 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Add this logging to your existing upload_project function too
-@router.post("/projects/upload", response_model=ProjectUploadResponse)
-async def upload_project(file: UploadFile = File(...)):
-    """Upload ZIP file and return project with indexed file list - ENHANCED WITH LOGGING"""
+# @router.post("/projects/upload", response_model=ProjectUploadResponse)
+# async def upload_project(file: UploadFile = File(...)):
+#     """Upload ZIP file and return project with indexed file list - ENHANCED WITH LOGGING"""
     
-    logger.info(f"Starting project upload: {file.filename}")
+#     logger.info(f"Starting project upload: {file.filename}")
     
-    try:
-        if not file.filename.endswith('.zip'):
-            logger.warning(f"Invalid file type: {file.filename}")
-            raise HTTPException(status_code=400, detail="Only ZIP files are supported")
+#     try:
+#         if not file.filename.endswith('.zip'):
+#             logger.warning(f"Invalid file type: {file.filename}")
+#             raise HTTPException(status_code=400, detail="Only ZIP files are supported")
         
-        # Generate unique project ID
-        project_id = str(uuid.uuid4())[:8]
-        logger.info(f"Generated project ID: {project_id}")
+#         # Generate unique project ID
+#         project_id = str(uuid.uuid4())[:8]
+#         logger.info(f"Generated project ID: {project_id}")
         
-        # Create temp directory for this project
-        project_temp_dir = tempfile.mkdtemp(prefix=f"project_{project_id}_")
-        extract_dir = os.path.join(project_temp_dir, "extracted")
-        os.makedirs(extract_dir)
+#         # Create temp directory for this project
+#         project_temp_dir = tempfile.mkdtemp(prefix=f"project_{project_id}_")
+#         extract_dir = os.path.join(project_temp_dir, "extracted")
+#         os.makedirs(extract_dir)
         
-        logger.info(f"Created temp directory: {project_temp_dir}")
+#         logger.info(f"Created temp directory: {project_temp_dir}")
         
-        # Save and extract ZIP
-        zip_path = os.path.join(project_temp_dir, file.filename)
-        content = await file.read()
+#         # Save and extract ZIP
+#         zip_path = os.path.join(project_temp_dir, file.filename)
+#         content = await file.read()
         
-        logger.info(f"Read {len(content)} bytes from uploaded file")
+#         logger.info(f"Read {len(content)} bytes from uploaded file")
         
-        with open(zip_path, "wb") as f:
-            f.write(content)
+#         with open(zip_path, "wb") as f:
+#             f.write(content)
         
-        # FIXED: Better ZIP extraction with error handling
-        try:
-            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                # Check for malicious paths
-                for member in zip_ref.infolist():
-                    if member.filename.startswith('/') or '..' in member.filename:
-                        logger.warning(f"Suspicious file path detected: {member.filename}")
-                        continue
+#         # FIXED: Better ZIP extraction with error handling
+#         try:
+#             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+#                 # Check for malicious paths
+#                 for member in zip_ref.infolist():
+#                     if member.filename.startswith('/') or '..' in member.filename:
+#                         logger.warning(f"Suspicious file path detected: {member.filename}")
+#                         continue
                     
-                zip_ref.extractall(extract_dir)
-                logger.info(f"Extracted ZIP to: {extract_dir}")
+#                 zip_ref.extractall(extract_dir)
+#                 logger.info(f"Extracted ZIP to: {extract_dir}")
                 
-        except zipfile.BadZipFile:
-            logger.error("Invalid ZIP file uploaded")
-            raise HTTPException(status_code=400, detail="Invalid ZIP file")
+#         except zipfile.BadZipFile:
+#             logger.error("Invalid ZIP file uploaded")
+#             raise HTTPException(status_code=400, detail="Invalid ZIP file")
         
-        # Analyze Python files with INDEX
-        python_files = []
-        file_index = 0
+#         # Analyze Python files with INDEX
+#         python_files = []
+#         file_index = 0
         
-        for root, _, files in os.walk(extract_dir):
-            for file_name in files:
-                if file_name.endswith('.py') and not file_name.startswith('._'):  # FIXED: Skip macOS hidden files
-                    file_path = os.path.join(root, file_name)
-                    relative_path = os.path.relpath(file_path, extract_dir)
+#         for root, _, files in os.walk(extract_dir):
+#             for file_name in files:
+#                 if file_name.endswith('.py') and not file_name.startswith('._'):  # FIXED: Skip macOS hidden files
+#                     file_path = os.path.join(root, file_name)
+#                     relative_path = os.path.relpath(file_path, extract_dir)
                     
-                    # FIXED: Skip very small files (likely empty or just imports)
-                    file_size = os.path.getsize(file_path)
-                    if file_size < 10:  # Skip tiny files
-                        continue
+#                     # FIXED: Skip very small files (likely empty or just imports)
+#                     file_size = os.path.getsize(file_path)
+#                     if file_size < 10:  # Skip tiny files
+#                         continue
                     
-                    python_files.append({
-                        "index": file_index,
-                        "name": file_name,
-                        "path": relative_path,
-                        "full_path": file_path,
-                        "size": file_size
-                    })
-                    file_index += 1
+#                     python_files.append({
+#                         "index": file_index,
+#                         "name": file_name,
+#                         "path": relative_path,
+#                         "full_path": file_path,
+#                         "size": file_size
+#                     })
+#                     file_index += 1
         
-        logger.info(f"Found {len(python_files)} Python files")
+#         logger.info(f"Found {len(python_files)} Python files")
         
-        if len(python_files) == 0:
-            logger.warning("No Python files found in uploaded project")
-            raise HTTPException(status_code=400, detail="No Python files found in the uploaded project")
+#         if len(python_files) == 0:
+#             logger.warning("No Python files found in uploaded project")
+#             raise HTTPException(status_code=400, detail="No Python files found in the uploaded project")
         
-        # Store project info
-        project_info = {
-            "project_id": project_id,
-            "name": file.filename.replace('.zip', ''),
-            "upload_time": time.time(),
-            "extracted_path": extract_dir,
-            "python_files": python_files,
-            "total_files": len(python_files)
-        }
+#         # Store project info
+#         project_info = {
+#             "project_id": project_id,
+#             "name": file.filename.replace('.zip', ''),
+#             "upload_time": time.time(),
+#             "extracted_path": extract_dir,
+#             "python_files": python_files,
+#             "total_files": len(python_files)
+#         }
         
-        store_project(project_id, project_info)
-        logger.info(f"Stored project {project_id} with {len(python_files)} files")
+#         store_project(project_id, project_info)
+#         logger.info(f"Stored project {project_id} with {len(python_files)} files")
         
-        return ProjectUploadResponse(
-            status="success",
-            project_id=project_id,
-            project_name=project_info["name"],
-            total_files=len(python_files),
-            files=[{
-                "index": f["index"],
-                "name": f["name"], 
-                "path": f["path"],
-                "size": f["size"]
-            } for f in python_files]
-        )
+#         return ProjectUploadResponse(
+#             status="success",
+#             project_id=project_id,
+#             project_name=project_info["name"],
+#             total_files=len(python_files),
+#             files=[{
+#                 "index": f["index"],
+#                 "name": f["name"], 
+#                 "path": f["path"],
+#                 "size": f["size"]
+#             } for f in python_files]
+#         )
         
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"Project upload failed: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=f"Project upload failed: {str(e)}")
+#     except HTTPException:
+#         raise
+#     except Exception as e:
+#         logger.error(f"Project upload failed: {str(e)}")
+#         import traceback
+#         traceback.print_exc()
+#         raise HTTPException(status_code=500, detail=f"Project upload failed: {str(e)}")

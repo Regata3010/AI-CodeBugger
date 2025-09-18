@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from api.routes import analysis, chat, projects  # Importing the analysis route
+from api.routes import analysis, chat, projects, vscode  # Importing the analysis route
 
 # # Import route modules (we'll create these next)
 # from backend.api.routes import analysis, auth, projects
@@ -10,7 +10,7 @@ from api.routes import analysis, chat, projects  # Importing the analysis route
 app = FastAPI(
     title="AI Code Review API",
     description="Advanced AI-powered code analysis platform",
-    version="1.0.0"
+    version="2.0.0"
 )
 # "http://localhost:3000"
 # Add CORS middleware (allows frontend to call backend)
@@ -27,6 +27,7 @@ app.add_middleware(
 app.include_router(analysis.router, prefix="/api/v1", tags=["analysis"])
 app.include_router(chat.router, prefix="/api/v1", tags=["conversational"])
 app.include_router(projects.router, prefix="/api/v1", tags=["projects"])
+app.include_router(vscode.router, prefix="/api/v1", tags=["vscode"])
 # app.include_router(auth.router, prefix="/api/v1", tags=["auth"])
 # app.include_router(projects.router, prefix="/api/v1", tags=["projects"])
 

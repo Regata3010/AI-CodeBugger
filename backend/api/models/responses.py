@@ -71,3 +71,19 @@ class GitHubAnalysisResponse(BaseModel):
     total_files: int
     files: List[dict]
     download_time: float
+    
+class VSCodeChatResponse(BaseModel):
+    status: str
+    response: str
+    analysis_type: str
+    execution_time: float
+    model_used: str
+    suggestions: Optional[List[str]] = None
+    
+    
+class ConversationalVSCodeChatResponse(BaseModel):
+    status: str
+    response : str
+    session_id: str
+    execution_time: float
+    model_used: str
