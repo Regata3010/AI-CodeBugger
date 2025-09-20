@@ -1,0 +1,70 @@
+name: Deploy to GKE
+
+on:
+  workflow_dispatch:
+    inputs:
+      backend_version:
+        description: 'Backend version to deploy (e.g., v1.4)'
+        required: true
+        default: 'v1.4'
+      frontend_version:
+        description: 'Frontend version to deploy (e.g., v1.2)'
+        required: true
+        default: 'v1.2'
+
+env:
+  PROJECT_ID: ai-bugger
+  GKE_CLUSTER: ai-code-review-cluster
+  GKE_ZONE: us-central1-a
+  NAMESPACE: ai-code-review
+
+jobs:
+  deploy:
+    name: Deploy to GKE
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: '${{ secrets.GCP_SA_KEY }}'
+    
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+    
+    - name: Get GKE credentials
+      run: |
+        gcloud container clusters get-credentials ai-code-review-cluster \
+          --zone us-central1-a \
+          --project ai-bugger
+    
+    - name: Deploy Backend
+      run: |
+        echo "Deploying Backend version: ${{ github.event.inputs.backend_version }}"
+        
+        kubectl set image deployment/backend-deployment \
+          backend=us-central1-docker.pkg.dev/ai-bugger/ai-code-review-platform/backend:${{ github.event.inputs.backend_version }} \
+          -n ai-code-review
+        
+        kubectl rollout status deployment/backend-deployment -n ai-code-review
+    
+    - name: Deploy Frontend
+      run: |
+        echo "Deploying Frontend version: ${{ github.event.inputs.frontend_version }}"
+        
+        kubectl set image deployment/frontend-deployment \
+          frontend=us-central1-docker.pkg.dev/ai-bugger/ai-code-review-platform/frontend:${{ github.event.inputs.frontend_version }} \
+          -n ai-code-review
+        
+        kubectl rollout status deployment/frontend-deployment -n ai-code-review
+    
+    - name: Show Deployment Status
+      run: |
+        echo "=== Current Deployments ==="
+        kubectl get deployments -n ai-code-review
+        echo ""
+        echo "=== Running Pods ==="
+        kubectl get pods -n ai-code-review
+        echo ""
+        echo "=== Services ==="
+        kubectl get services -n ai-code-review
