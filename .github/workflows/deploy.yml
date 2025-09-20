@@ -15,7 +15,7 @@ on:
 env:
   PROJECT_ID: ai-bugger
   GKE_CLUSTER: ai-code-bugger
-  GKE_ZONE: us-central1
+  GKE_ZONE: us-central1-a
   NAMESPACE: ai-code-review
 
 jobs:
@@ -32,10 +32,14 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
     
+    - name: Install GKE auth plugin
+      run: |
+        gcloud components install gke-gcloud-auth-plugin
+    
     - name: Get GKE credentials
       run: |
         gcloud container clusters get-credentials ai-code-bugger \
-          --zone us-central1 \
+          --zone us-central1-a \
           --project ai-bugger
     
     - name: Deploy Backend
