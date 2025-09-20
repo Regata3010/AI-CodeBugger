@@ -14,7 +14,7 @@ on:
 
 env:
   PROJECT_ID: ai-bugger
-  GKE_CLUSTER: ai-code-review-cluster
+  GKE_CLUSTER: ai-code-bugger
   GKE_ZONE: us-central1-a
   NAMESPACE: ai-code-review
 
@@ -34,7 +34,7 @@ jobs:
     
     - name: Get GKE credentials
       run: |
-        gcloud container clusters get-credentials ai-code-review-cluster \
+        gcloud container clusters get-credentials ai-code-bugger \
           --zone us-central1-a \
           --project ai-bugger
     
