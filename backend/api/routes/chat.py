@@ -17,8 +17,10 @@ async def conversational(request: ConversationalRequest):
     try:
         # Get API key from environment
         
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/nuclearreactor3010/AI-CodeBugger/backend/regata-2ca53-df75398184a5.json"
-        # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/AI Bugger/backend/regata-2ca53-df75398184a5.json"  ##Local Path in Mac (use only for local dev)
+        # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/nuclearreactor3010/AI-CodeBugger/backend/regata-2ca53-df75398184a5.json"
+        if not os.getenv("GOOGLE_APPLICATION_CREDENTIALS"):
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/app/credentials/google-credentials.json"
+            ##Local Path in Mac (use only for local dev)
         openai_api_key = os.getenv("OPENAI_API_KEY")
         if not openai_api_key:
             raise HTTPException(status_code=500, detail="OpenAI API key not configured")
@@ -113,9 +115,13 @@ async def chat_about_project_file(project_id: str, request: ProjectChatRequest):
             context_code = get_combined_project_code(project)
             context_info = f"Project: {project['name']}"
             
-        # Setup Firestore chat
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/nuclearreactor3010/AI-CodeBugger/backend/regata-2ca53-df75398184a5.json"
-        
+        # # Setup Firestore chat
+        # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/nuclearreactor3010/AI-CodeBugger/backend/regata-2ca53-df75398184a5.json"
+       
+        # ##Local Path in Mac (use only for local dev)
+        if not os.getenv("GOOGLE_APPLICATION_CREDENTIALS"):
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/app/credentials/google-credentials.json"
+            
         PROJECT_ID = "regata-2ca53"
         COLLECTION_NAME = "chat_history_chains"
         
