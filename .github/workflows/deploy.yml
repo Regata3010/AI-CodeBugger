@@ -50,7 +50,7 @@ jobs:
           backend=us-central1-docker.pkg.dev/ai-bugger/ai-code-review-platform/backend:${{ github.event.inputs.backend_version }} \
           -n ai-code-review
         
-        kubectl rollout status deployment/backend-deployment -n ai-code-review
+        kubectl rollout status deployment/backend-deployment -n ai-code-review --timeout=10m
     
     - name: Deploy Frontend
       run: |
@@ -60,7 +60,7 @@ jobs:
           frontend=us-central1-docker.pkg.dev/ai-bugger/ai-code-review-platform/frontend:${{ github.event.inputs.frontend_version }} \
           -n ai-code-review
         
-        kubectl rollout status deployment/frontend-deployment -n ai-code-review
+        kubectl rollout status deployment/frontend-deployment -n ai-code-review --timeout=10m
     
     - name: Show Deployment Status
       run: |
